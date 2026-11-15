@@ -377,7 +377,7 @@ window.CONTENT = {
     {
       slug: "off-escac",
       name: { es: "Programa de formación digital OFF ESCAC", en: "OFF ESCAC digital training programme" },
-      programme: { es: "ESCAC · Plan de Recuperación (NextGenerationEU)", en: "ESCAC · Recovery Plan (NextGenerationEU)" },
+      programme: "ESCAC · NextGenerationEU",
       amount: null,
       year: "2025",
       duration: { es: "12 meses (enero–diciembre de 2025)", en: "12 months (January–December 2025)" },
@@ -397,8 +397,8 @@ window.CONTENT = {
         },
         details: [
           {
-            es: "OFF ESCAC era el programa de formación gratuita de la ESCAC (Escola Superior de Cinema i Audiovisuals de Catalunya), financiado por la Unión Europea (NextGenerationEU) dentro del Plan de Recuperación, con el Ministerio de Cultura y el ICAA, para llevar la formación audiovisual y de videojuegos a todo el territorio. ESCAC seleccionaba un socio por territorio en toda España; en Alicante nos eligieron a GGTech, con el apoyo de Ciudad de la Luz.",
-            en: "OFF ESCAC was the free training programme of ESCAC (the Catalan film school, Escola Superior de Cinema i Audiovisuals de Catalunya), funded by the European Union (NextGenerationEU) under Spain's Recovery Plan, with the Ministry of Culture and ICAA, bringing audiovisual and video game training across Spain. ESCAC selected one partner per region; in Alicante they chose GGTech, with the support of Ciudad de la Luz.",
+            es: "OFF ESCAC era el programa de formación gratuita de la ESCAC (Escola Superior de Cinema i Audiovisuals de Catalunya), financiado por la Unión Europea (NextGenerationEU), con el Ministerio de Cultura y el ICAA, para llevar la formación audiovisual y de videojuegos a todo el territorio. ESCAC seleccionaba un socio por territorio en toda España; en Alicante nos eligieron a GGTech, con el apoyo de Ciudad de la Luz.",
+            en: "OFF ESCAC was the free training programme of ESCAC (the Catalan film school, Escola Superior de Cinema i Audiovisuals de Catalunya), funded by the European Union (NextGenerationEU), with the Ministry of Culture and ICAA, bringing audiovisual and video game training across Spain. ESCAC selected one partner per region; in Alicante they chose GGTech, with the support of Ciudad de la Luz.",
           },
           {
             es: "Durante 12 meses, de enero a diciembre de 2025, organizamos formaciones intensivas de dos semanas. Los cursos enseñaron a trabajar como en un estudio profesional, con las mismas herramientas y flujos de trabajo, para que el alumnado adquiriera habilidades aplicables directamente al mercado laboral.",
@@ -431,8 +431,8 @@ window.CONTENT = {
         },
         details: [
           {
-            es: "Proyecto de I+D+i financiado por el CDTI para crear un plató virtual en tiempo real con Unreal Engine, pensado para retransmisiones de esports. La imagen de las cámaras se integra en directo en un escenario 3D. Para la ayuda preparamos también una web del proyecto. Su título original era «Platós virtuales en tiempo real con contenido audiovisual dinámico e interactivo».",
-            en: "An R&D and innovation project funded by CDTI to build a real-time virtual stage in Unreal Engine for esports broadcasts. Camera footage is composited live into a 3D set. We also built a project website for the grant. Its original title was “Real-time virtual stages with dynamic, interactive audiovisual content”.",
+            es: "Proyecto de I+D+i financiado por el CDTI para crear un plató virtual en tiempo real con Unreal Engine, pensado para retransmisiones en directo. La imagen de las cámaras se integra en directo en un escenario 3D. Para la ayuda preparamos también una web del proyecto. Su título original era «Platós virtuales en tiempo real con contenido audiovisual dinámico e interactivo».",
+            en: "An R&D and innovation project funded by CDTI to build a real-time virtual stage in Unreal Engine for live broadcasts. Camera footage is composited live into a 3D set. We also built a project website for the grant. Its original title was “Real-time virtual stages with dynamic, interactive audiovisual content”.",
           },
           {
             es: "Esta tecnología se usaba sobre todo en cine y en grandes producciones, casi siempre en diferido y con soluciones propietarias. El objetivo era acercarla a productoras medianas y pequeñas, con herramientas que pudiera manejar un equipo sin conocimientos de Unreal Engine.",
@@ -450,7 +450,7 @@ window.CONTENT = {
           { es: "Integración de personas en remoto dentro del plató virtual.", en: "Bringing remote participants into the virtual stage." },
         ],
       },
-      text: { es: "Proyecto de I+D+i financiado por el CDTI para crear un plató virtual en tiempo real con Unreal Engine para retransmisiones de esports.", en: "A CDTI-funded R&D and innovation project to build a real-time virtual stage in Unreal Engine for esports broadcasts." },
+      text: { es: "Proyecto de I+D+i financiado por el CDTI para crear un plató virtual en tiempo real con Unreal Engine para retransmisiones en directo.", en: "A CDTI-funded R&D and innovation project to build a real-time virtual stage in Unreal Engine for live broadcasts." },
     },
   ],
 
