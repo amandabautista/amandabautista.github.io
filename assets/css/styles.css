@@ -545,7 +545,8 @@ a, button { touch-action: manipulation; }
 @media (min-width: 640px) { .work-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .work-shot img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; box-shadow: var(--shadow); }
 
-/* Volver arriba: solo en móvil y tablet, donde la página es muy larga */
+/* Volver arriba: en móvil y en cualquier pantalla táctil (iPad también en horizontal);
+   se oculta solo en ordenadores con ratón y pantalla ancha */
 .to-top {
   position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 40; display: grid; place-items: center; width: 48px; height: 48px; padding: 0;
@@ -560,4 +561,4 @@ a, button { touch-action: manipulation; }
 .to-top:active { transform: scale(.94); }
 .to-top:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
-@media (min-width: 900px) { .to-top { display: none; } }
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) { .to-top { display: none; } }

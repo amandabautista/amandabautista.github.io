@@ -596,7 +596,7 @@
     setupCounters();
   }
 
-  /* Botón para volver arriba (en móvil y tablet; en escritorio lo oculta el CSS).
+  /* Botón para volver arriba (en móvil y pantallas táctiles; en escritorio con ratón lo oculta el CSS).
      Aparece tras bajar algo más de una pantalla. */
   var toTop = document.createElement("button");
   toTop.type = "button"; toTop.id = "to-top"; toTop.className = "to-top"; toTop.innerHTML = ICON.arrowUp;
