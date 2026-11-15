@@ -502,6 +502,7 @@ window.CONTENT = {
     fundedTitle: { es: "Proyectos laborales", en: "Work projects" },
     otherWorkProjects: { es: "Otros proyectos laborales", en: "Other work projects" },
     backExperience: { es: "Volver a experiencia", en: "Back to experience" },
+    toTop: { es: "Volver arriba", en: "Back to top" },
     caseRole: { es: "Mi papel", en: "My role" },
     caseAbout: { es: "El proyecto", en: "The project" },
     caseHighlights: { es: "Lo más destacado", en: "Highlights" },

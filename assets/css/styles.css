@@ -544,3 +544,20 @@ a, button { touch-action: manipulation; }
 .work-gallery { display: grid; gap: 20px; }
 @media (min-width: 640px) { .work-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .work-shot img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; box-shadow: var(--shadow); }
+
+/* Volver arriba: solo en móvil y tablet, donde la página es muy larga */
+.to-top {
+  position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 40; display: grid; place-items: center; width: 48px; height: 48px; padding: 0;
+  border: 0; border-radius: 50%; cursor: pointer; color: #fff;
+  background: linear-gradient(120deg, #5b4a9e, #c8325f);
+  box-shadow: 0 10px 24px -8px rgba(91, 74, 158, .55);
+  opacity: 0; visibility: hidden; transform: translateY(12px) scale(.9);
+  transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out), visibility 0s linear 220ms;
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.to-top svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.to-top:active { transform: scale(.94); }
+.to-top:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .to-top { transition: none; } }
+@media (min-width: 900px) { .to-top { display: none; } }

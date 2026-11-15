@@ -42,6 +42,7 @@
     mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>',
     linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.6 4.77 6V21h-4v-5c0-1.2-.02-2.73-1.66-2.73-1.67 0-1.93 1.3-1.93 2.64V21h-4z"/></svg>',
     github: '<svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>',
+    arrowUp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>',
     arrowLeft: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
     check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
     chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
@@ -589,12 +590,27 @@
       renderProjectPage();
     }
     renderFooter();
+    if ($("to-top")) $("to-top").setAttribute("aria-label", t(C.ui.toTop));
     if (document.body.classList.contains("ready")) document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
     setupReveal();
     setupCounters();
   }
 
+  /* Botón para volver arriba (en móvil y tablet; en escritorio lo oculta el CSS).
+     Aparece tras bajar algo más de una pantalla. */
+  var toTop = document.createElement("button");
+  toTop.type = "button"; toTop.id = "to-top"; toTop.className = "to-top"; toTop.innerHTML = ICON.arrowUp;
+  toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    var logo = document.querySelector("#site-header a");
+    if (logo) logo.focus({ preventScroll: true });
+  });
+  document.body.appendChild(toTop);
+  function updateToTop() { toTop.classList.toggle("show", window.scrollY > window.innerHeight * 1.2); }
+  window.addEventListener("scroll", updateToTop, { passive: true });
+
   render();
+  updateToTop();
   setupActiveNav();
   window.addEventListener("scroll", function () { $("site-header").classList.toggle("is-scrolled", window.scrollY > 8); }, { passive: true });
   // El contenido se pinta con JavaScript, así que el salto a #apartado se hace después.
