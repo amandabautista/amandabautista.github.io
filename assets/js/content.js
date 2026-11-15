@@ -454,6 +454,24 @@ window.CONTENT = {
     },
   ],
 
+  /* ---------- Propuestas en evaluación ---------- */
+  inEvaluation: [
+    {
+      programme: { es: "Horizonte Europa · Clúster 2", en: "Horizon Europe · Cluster 2" },
+      topic: { es: "IA en las industrias culturales y creativas", en: "AI in the cultural and creative industries" },
+      call: { id: "HORIZON-CL2-2026-01-HERITAGE-03", url: "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-CL2-2026-01-HERITAGE-03" },
+      year: "2026",
+      text: { es: "Consorcio de 15 socios de 6 países, durante 36 meses, para crear herramientas de IA creativa accesibles (artes visuales, narrativa y música) y apoyo empresarial para el sector cultural y creativo, pensadas para personas con discapacidad, jóvenes en situación de vulnerabilidad y pymes creativas.", en: "A consortium of 15 partners from 6 countries, over 36 months, to build accessible creative AI tools (visual arts, storytelling and music) and business support for the cultural and creative sector, aimed at people with disabilities, vulnerable young people and creative SMEs." },
+    },
+    {
+      programme: "CERV",
+      topic: { es: "Estereotipos de género en los medios y la publicidad", en: "Gender stereotypes in media and advertising" },
+      call: { id: "CERV-2026-GE-GENDER-STEREO", url: "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/cerv/wp-call/2026/call-fiche_cerv-2026-ge_en.pdf" },
+      year: "2026",
+      text: { es: "Consorcio de 6 socios de Italia, Serbia y España para evaluar y reducir los estereotipos de género en la publicidad infantil de juguetes, moda y videojuegos, durante 24 meses.", en: "A consortium of 6 partners from Italy, Serbia and Spain to assess and reduce gender stereotypes in children's advertising for toys, fashion and video games, over 24 months." },
+    },
+  ],
+
   education: [
     { title: { es: "Máster en Dirección, gestión y dinamización cultural", en: "Master's in Cultural Management" }, org: "Instituto Superior de Intervención y Acción Social", year: "2021–2022" },
     { title: { es: "Máster en Arqueología y Gestión del Patrimonio", en: "Master's in Archaeology and Heritage Management" }, org: { es: "Universidad de Alicante", en: "University of Alicante" }, year: "2018–2019" },
@@ -501,6 +519,9 @@ window.CONTENT = {
     otherRolesTitle: { es: "Otros puestos", en: "Other roles" },
     fundedTitle: { es: "Proyectos laborales", en: "Work projects" },
     otherWorkProjects: { es: "Otros proyectos laborales", en: "Other work projects" },
+    evalTitle: { es: "Propuestas en evaluación", en: "Proposals under evaluation" },
+    evalIntro: { es: "Propuestas europeas presentadas en 2026 que están pendientes de resolución.", en: "European proposals submitted in 2026, awaiting a decision." },
+    evalBadge: { es: "En evaluación", en: "Under evaluation" },
     backExperience: { es: "Volver a experiencia", en: "Back to experience" },
     toTop: { es: "Volver arriba", en: "Back to top" },
     caseRole: { es: "Mi papel", en: "My role" },

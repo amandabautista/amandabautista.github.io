@@ -331,11 +331,23 @@
       "</div></li>";
     }).join("");
 
+    // Propuestas en evaluación: sin título del proyecto, solo programa y convocatoria.
+    var evals = (C.inEvaluation || []).map(function (e, ei) {
+      var call = e.call ? (e.call.url ? '<a class="fact-link" href="' + esc(e.call.url) + '" target="_blank" rel="noopener">' + esc(e.call.id) + "</a>" : esc(e.call.id)) : "";
+      return '<li class="reveal" style="--d:' + (ei % 2) + '"><div class="fund fund-eval">' +
+        '<div class="fund-top"><h4>' + tx(e.topic) + '</h4><span class="fund-badge">' + tx(C.ui.evalBadge) + "</span></div>" +
+        '<p class="fund-meta">' + tx(e.programme) + (e.year ? ", " + tx(e.year) : "") + "</p>" +
+        '<p class="fund-text">' + tx(e.text) + "</p>" +
+        (call ? '<p class="fund-foot fund-call">' + call + "</p>" : "") +
+      "</div></li>";
+    }).join("");
+
     $("experience").innerHTML =
       '<div class="container">' + head("experience") +
         '<div class="xp reveal"><div class="xp-tabs" role="tablist" aria-label="' + tx(C.ui.nav.experience) + '">' + tabs + "</div>" +
         '<div class="xp-panels">' + panels + "</div></div>" +
         (funded ? '<h3 class="sub-title reveal">' + tx(C.ui.fundedTitle) + '</h3><ul class="funds">' + funded + "</ul>" : "") +
+        (evals ? '<h3 class="sub-title reveal">' + tx(C.ui.evalTitle) + '</h3><p class="sub-intro reveal">' + tx(C.ui.evalIntro) + '</p><ul class="funds funds-eval">' + evals + "</ul>" : "") +
       "</div>";
 
     var btns = [].slice.call(document.querySelectorAll(".xp-tab"));
