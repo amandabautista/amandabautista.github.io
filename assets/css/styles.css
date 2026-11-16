@@ -449,14 +449,6 @@ a, button { touch-action: manipulation; }
 .skill-list span { color: var(--faint); }
 .tools { margin-top: 20px; padding: 28px; border-radius: var(--radius); background: var(--bg-alt); }
 .tools .chips { margin-top: 18px; }
-/* Herramientas en rejilla: todas las píldoras del mismo ancho, en filas completas
-   (20 herramientas: 4 columnas × 5 filas; en móvil, 2 × 10) */
-.tools .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-@media (min-width: 600px) { .tools .chips { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-.tools .chip { min-height: 40px; padding: 8px 12px; border-radius: 12px; line-height: 1.25; }
-.tools .chip img { flex: none; }
-.tools .chips { grid-auto-rows: 1fr; }
-@media (max-width: 599px) { .tools { padding: 22px 16px; } .tools .chips { gap: 8px; } .tools .chip { padding: 8px 10px; gap: 8px; } }
 
 /* Contacto */
 .contact-section { padding-top: 32px; }
