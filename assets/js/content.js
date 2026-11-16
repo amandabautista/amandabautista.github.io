@@ -196,39 +196,6 @@ window.CONTENT = {
     },
   ],
 
-  /* ---------- Cómo trabajo ---------- */
-  showApproach: false,
-  approach: [
-    {
-      title: { es: "Que cambie una decisión", en: "It has to change a decision" },
-      text: {
-        es: "Antes de construir algo pregunto qué decidirá alguien distinto gracias a eso. Si la respuesta es nada, no entra, aunque ya esté hecho.",
-        en: "Before building something I ask what someone will decide differently because of it. If the answer is nothing, it stays out, even if it's already built.",
-      },
-    },
-    {
-      title: { es: "Nada que haya que mantener a mano", en: "Nothing that needs manual upkeep" },
-      text: {
-        es: "Un dato que hay que teclear y actualizar acaba mintiendo. Prefiero leer lo que ya existe a pedir que alguien lo escriba.",
-        en: "Data someone has to type in and keep current ends up lying. I'd rather read what already exists than ask someone to write it.",
-      },
-    },
-    {
-      title: { es: "Medidas, no promesas", en: "Measurements, not assurances" },
-      text: {
-        es: "A la IA le pido medidas: contraste de color, separación para daltonismo, coste de cada vista previa. Cada arreglo llega con un test que falla sin él.",
-        en: "I ask the AI for measurements: colour contrast, colour-blind separation, the cost of each preview. Every fix comes with a test that fails without it.",
-      },
-    },
-    {
-      title: { es: "Lo pruebo usándolo", en: "I test it by using it" },
-      text: {
-        es: "Uso lo que construyo cada semana. Así aparecieron un proceso que se paraba a mitad y una estadística dividida por el total equivocado.",
-        en: "I use what I build every week. That's how a job that stopped halfway and a statistic divided by the wrong total came up.",
-      },
-    },
-  ],
-
   /* ---------- Experiencia ---------- */
   experience: [
     {
@@ -495,7 +462,6 @@ window.CONTENT = {
     nav: {
       about: { es: "Sobre mí", en: "About" },
       projects: { es: "Proyectos", en: "Projects" },
-      approach: { es: "Cómo trabajo", en: "How I work" },
       experience: { es: "Experiencia", en: "Experience" },
       contact: { es: "Contacto", en: "Contact" },
     },
@@ -504,7 +470,6 @@ window.CONTENT = {
       about: { title: { es: "Sobre mí", en: "About me" }, sub: null },
       experience: { title: { es: "Experiencia", en: "Experience" }, sub: { es: "Dónde he trabajado y qué hacía.", en: "Where I've worked and what I did." } },
       projects: { title: { es: "Proyectos propios", en: "My own projects" }, sub: { es: "Aplicaciones que he llevado de la idea al instalable, construidas con IA.", en: "Apps I've taken from idea to installer, built with AI." } },
-      approach: { title: { es: "Cómo trabajo", en: "How I work" }, sub: { es: "Los criterios que aplico al decidir qué se construye.", en: "The criteria I use to decide what gets built." } },
       skills: { title: { es: "Formación y herramientas", en: "Education and tools" }, sub: null },
     },
     ctaProjects: { es: "Ver proyectos", en: "See projects" },
@@ -515,8 +480,6 @@ window.CONTENT = {
     openLink: { es: "Ver el proyecto", en: "View the project" },
     downloadCv: { es: "Descargar CV", en: "Download CV" },
     present: { es: "hoy", en: "now" },
-    pending: { es: "Pendiente de rellenar", en: "Still to fill in" },
-    otherRolesTitle: { es: "Otros puestos", en: "Other roles" },
     fundedTitle: { es: "Proyectos laborales", en: "Work projects" },
     otherWorkProjects: { es: "Otros proyectos laborales", en: "Other work projects" },
     evalTitle: { es: "Propuestas en evaluación", en: "Proposals under evaluation" },
@@ -531,11 +494,6 @@ window.CONTENT = {
     gallery: { es: "Algunos de los cursos", en: "Some of the courses" },
     journeyKinds: { work: { es: "Trabajo", en: "Work" }, study: { es: "Formación", en: "Education" }, project: { es: "Proyecto", en: "Project" } },
     repoLabel: { es: "Ver el case study en GitHub", en: "View the case study on GitHub" },
-    fundMore: { es: "Ver más", en: "See more" },
-    fundLess: { es: "Ver menos", en: "See less" },
-    fundRole: { es: "Mi papel", en: "My role" },
-    fundHighlights: { es: "Lo más destacado", en: "Highlights" },
-    fundPending: { es: "Información pendiente de añadir.", en: "Details coming soon." },
     educationTitle: { es: "Formación", en: "Education" },
     certificatesTitle: { es: "Certificados", en: "Certificates" },
     languagesTitle: { es: "Idiomas", en: "Languages" },
@@ -545,7 +503,6 @@ window.CONTENT = {
       es: "Si quieres hablar de un proyecto, de una propuesta o de algo que hayas visto aquí, escríbeme.",
       en: "If you'd like to talk about a project, a proposal or anything you've seen here, write to me.",
     },
-    emailMissing: { es: "Falta el correo de contacto (content.js, profile.email).", en: "Contact email missing (content.js, profile.email)." },
     themeLight: { es: "Cambiar a modo claro", en: "Switch to light mode" },
     themeDark: { es: "Cambiar a modo oscuro", en: "Switch to dark mode" },
     langSwitch: { es: "Read in English", en: "Leer en español" },

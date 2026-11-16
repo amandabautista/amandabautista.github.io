@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><title>Amanda Bautista</title>
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b4a9e"/><stop offset="1" stop-color="#ef5a82"/></linearGradient></defs>
-<rect width="256" height="256" rx="58" fill="url(#g)"/>
-<g transform="translate(128 128) scale(0.64) translate(-128 -127)"><g fill="none" stroke="#fff" stroke-width="28" stroke-linejoin="round" stroke-linecap="round" transform="translate(-6 0)">
-<path d="M136 48 L45 206"/><path d="M70 166 H136"/><path d="M136 206 V48 H166 a37 37 0 0 1 0 74 H136"/><path d="M136 122 H170 a42 42 0 0 1 0 84 H136"/>
-</g></g></svg>

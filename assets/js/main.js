@@ -45,18 +45,10 @@
     arrowUp: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>',
     arrowLeft: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
     check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
-    chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
-    // Cómo trabajo: uno por criterio, en orden
-    principles: [
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v18M6 12h8l4-4M14 12l4 4"/></svg>',
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17 9 6l4 7 3-4 5 8z"/></svg>',
-      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.3-5.6M4 4v4h4"/></svg>',
-    ],
   };
 
   /* Logo: "AB compartida" -- la pata derecha de la A es el asta de la B.
-     Mismo dibujo que assets/img/logo/ab-negro.svg; aqui en currentColor para que
+     Mismo dibujo que assets/img/logo/ab-negro.svg; aquí en currentColor para que
      vaya en blanco sobre el degradado de la marca. */
   var LOGO_AB = '<svg viewBox="0 0 256 256"><g fill="none" stroke="currentColor" stroke-width="28" stroke-linejoin="round" stroke-linecap="round" transform="translate(-6 0)"><path d="M136 48 L45 206"/><path d="M70 166 H136"/><path d="M136 206 V48 H166 a37 37 0 0 1 0 74 H136"/><path d="M136 122 H170 a42 42 0 0 1 0 84 H136"/></g></svg>';
 
@@ -76,7 +68,7 @@
     "Jira": "jira", "Trello": "trello", "Notion": "notion", "Slack": "slack",
     "ClickUp": "clickup", "Microsoft 365": "microsoft365", "Google Workspace": "googleworkspace",
     "Power BI": "powerbi", "Claude": "claude", "Make": "make", "Funding & Tenders Portal": "eu",
-    "PCM y Marco Lógico": "pcm", "PCM and Logical Framework": "pcm",
+    "PCM y Marco Lógico": "pcm", "PCM & Logframe": "pcm",
     "Electron": "electron", "React": "react", "TypeScript": "typescript",
     "Tailwind CSS": "tailwindcss", "SQLite": "sqlite", "Python": "python",
     "GitHub": "github", "Unity": "unity", "Unreal Engine": "unreal", "DaVinci Resolve": "davinci",
@@ -102,11 +94,16 @@
     // Tamaño declarado para que la página no salte mientras carga (las capturas son 1600 × 900).
     var attrs = ' alt="' + tx(im.alt) + '" width="' + (im.width || 1600) + '" height="' + (im.height || 900) + '"' +
       (eager ? "" : ' loading="lazy"') + ' decoding="async">';
+    // Con versión oscura se descarga solo la del tema activo; al cambiar de tema la cambia syncShots().
     if (im.dark) {
-      return '<img class="shot only-light" src="' + img(im.src) + '"' + attrs +
-        '<img class="shot only-dark" src="' + img(im.dark) + '"' + attrs;
+      var dark = root.getAttribute("data-theme") === "dark";
+      return '<img class="shot" data-light="' + img(im.src) + '" data-dark="' + img(im.dark) + '" src="' + img(dark ? im.dark : im.src) + '"' + attrs;
     }
     return '<img class="shot" src="' + img(im.src) + '"' + attrs;
+  }
+  function syncShots() {
+    var key = root.getAttribute("data-theme") === "dark" ? "data-dark" : "data-light";
+    document.querySelectorAll("img[data-dark]").forEach(function (el) { el.src = el.getAttribute(key); });
   }
   function cvHref() {
     var cv = C.profile.cv || {};
@@ -114,7 +111,7 @@
   }
 
   /* ---------- cabecera y pie ---------- */
-  var NAV = ["about", "experience", "projects", "approach", "contact"].filter(function (id) { return id !== "approach" || C.showApproach !== false; });
+  var NAV = ["about", "experience", "projects", "contact"];
 
   function renderHeader() {
     var links = NAV.map(function (id) {
@@ -151,19 +148,24 @@
       root.setAttribute("data-theme", next);
       store("theme", next);
       renderHeader();
+      syncShots();
       $("theme-toggle").focus();
     });
-    var menu = $("mobile-menu"), btn = $("menu-toggle");
-    function setMenu(open) {
-      menu.hidden = !open;
-      btn.setAttribute("aria-expanded", String(open));
-      btn.innerHTML = open ? ICON.close : ICON.menu;
-      $("site-header").classList.toggle("menu-open", open);
-    }
-    btn.addEventListener("click", function () { setMenu(menu.hidden); });
-    menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !menu.hidden) { setMenu(false); btn.focus(); } });
+    $("site-header").classList.remove("menu-open");
+    $("menu-toggle").addEventListener("click", function () { setMenu($("mobile-menu").hidden); });
+    $("mobile-menu").addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
   }
+  function setMenu(open) {
+    var btn = $("menu-toggle");
+    $("mobile-menu").hidden = !open;
+    btn.setAttribute("aria-expanded", String(open));
+    btn.innerHTML = open ? ICON.close : ICON.menu;
+    $("site-header").classList.toggle("menu-open", open);
+  }
+  document.addEventListener("keydown", function (e) {
+    var menu = $("mobile-menu");
+    if (e.key === "Escape" && menu && !menu.hidden) { setMenu(false); $("menu-toggle").focus(); }
+  });
 
   function renderFooter() {
     var p = C.profile;
@@ -296,16 +298,17 @@
       "</div>";
   }
 
+  var xpSelected = 0; // pestaña de Experiencia abierta; se mantiene al cambiar de idioma
   function renderExperience() {
     var list = C.experience.concat((C.otherRoles || []).map(function (o) {
-      return { role: o.role, org: o.org, place: o.place, start: o.start, end: o.end, points: o.points || (o.text ? [o.text] : []), tools: o.tools, logo: o.logo, url: o.url, darkInvert: o.darkInvert, logoPos: o.logoPos, logoSize: o.logoSize, tabLabel: o.tabLabel, short: o.short };
+      return { role: o.role, org: o.org, place: o.place, start: o.start, end: o.end, points: o.points || (o.text ? [o.text] : []), tools: o.tools, logo: o.logo, url: o.url, darkInvert: o.darkInvert, tabLabel: o.tabLabel, short: o.short };
     }));
     var tabs = list.map(function (e, i) {
-      return '<button class="xp-tab" role="tab" type="button" id="xp-tab-' + i + '" aria-controls="xp-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '">' +
-        (e.logo ? '<span class="xp-logo' + (e.darkInvert ? ' xp-logo-dark' : '') + '" aria-hidden="true" style="background-image:url(assets/img/companies/' + esc(e.logo) + ')' + (e.logoPos ? ';background-position:' + e.logoPos : '') + (e.logoSize ? ';background-size:' + e.logoSize : '') + '"></span>' : '') + '<span class="xp-tab-org">' + tx(e.tabLabel || e.org) + '</span><span class="xp-tab-short">' + tx(e.short || e.tabLabel || e.org) + '</span><span class="xp-tab-years">' + esc(String(e.start).split("-")[0]) + (e.end && String(e.end).split("-")[0] !== String(e.start).split("-")[0] ? "–" + esc(String(e.end).split("-")[0]) : (e.end ? "" : "–" + tx(C.ui.present))) + "</span></button>";
+      return '<button class="xp-tab" role="tab" type="button" id="xp-tab-' + i + '" aria-controls="xp-panel-' + i + '" aria-selected="' + (i === xpSelected) + '" tabindex="' + (i === xpSelected ? 0 : -1) + '">' +
+        (e.logo ? '<span class="xp-logo' + (e.darkInvert ? ' xp-logo-dark' : '') + '" aria-hidden="true" style="background-image:url(assets/img/companies/' + esc(e.logo) + ')"></span>' : '') + '<span class="xp-tab-org">' + tx(e.tabLabel || e.org) + '</span><span class="xp-tab-short">' + tx(e.short || e.tabLabel || e.org) + '</span><span class="xp-tab-years">' + esc(String(e.start).split("-")[0]) + (e.end && String(e.end).split("-")[0] !== String(e.start).split("-")[0] ? "–" + esc(String(e.end).split("-")[0]) : (e.end ? "" : "–" + tx(C.ui.present))) + "</span></button>";
     }).join("");
     var panels = list.map(function (e, i) {
-      return '<div class="xp-panel" role="tabpanel" id="xp-panel-' + i + '" aria-labelledby="xp-tab-' + i + '"' + (i === 0 ? "" : " hidden") + ">" +
+      return '<div class="xp-panel" role="tabpanel" id="xp-panel-' + i + '" aria-labelledby="xp-tab-' + i + '"' + (i === xpSelected ? "" : " hidden") + ">" +
         '<h3 class="xp-role">' + tx(e.role) + ' <span class="xp-at">' + (lang() === "en" ? "at" : "en") + " " + (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + tx(e.org) + "</a>" : tx(e.org)) + "</span></h3>" +
         '<p class="xp-meta">' + esc(fmtDate(e.start)) + " – " + esc(fmtDate(e.end)) + (e.place ? " <span>" + tx(e.place) + "</span>" : "") + "</p>" +
         '<ul class="xp-points">' + (e.points || []).map(function (pt, k) { return '<li style="--i:' + k + '">' + ICON.check + "<span>" + tx(pt) + "</span></li>"; }).join("") + "</ul>" +
@@ -314,9 +317,6 @@
       "</div>";
     }).join("");
 
-    // Cada proyecto financiado es un desplegable (<details>): accesible con
-    // teclado y lector de pantalla sin JavaScript extra. Lo que va dentro sale
-    // de `more` en content.js; si todavía está vacío, se dice.
     var u = C.ui;
     // Cada proyecto laboral es una tarjeta; si tiene contenido ("more"), enlaza a su
     // página propia, igual que los proyectos propios.
@@ -333,7 +333,7 @@
 
     // Propuestas en evaluación: sin título del proyecto, solo programa y convocatoria.
     var evals = (C.inEvaluation || []).map(function (e, ei) {
-      var call = e.call ? (e.call.url ? '<a class="fact-link" href="' + esc(e.call.url) + '" target="_blank" rel="noopener">' + esc(e.call.id) + "</a>" : esc(e.call.id)) : "";
+      var call = callLink(e.call);
       return '<li class="reveal" style="--d:' + (ei % 2) + '"><div class="fund fund-eval">' +
         '<div class="fund-top"><h4>' + tx(e.topic) + '</h4><span class="fund-badge">' + tx(C.ui.evalBadge) + "</span></div>" +
         '<p class="fund-meta">' + tx(e.programme) + (e.year ? ", " + tx(e.year) : "") + "</p>" +
@@ -352,6 +352,7 @@
 
     var btns = [].slice.call(document.querySelectorAll(".xp-tab"));
     function select(i, focus) {
+      xpSelected = i;
       btns.forEach(function (b, j) {
         var on = i === j;
         b.setAttribute("aria-selected", String(on));
@@ -395,14 +396,6 @@
     $("projects").innerHTML = '<div class="container">' + head("projects") + '<div class="pj-list">' + rows + "</div></div>";
   }
 
-  function renderApproach() {
-    var cards = C.approach.map(function (a, i) {
-      return '<li class="principle reveal" style="--d:' + i + '"><span class="principle-icon">' + (ICON.principles[i] || ICON.check) + "</span>" +
-        "<h3>" + tx(a.title) + "</h3><p>" + tx(a.text) + "</p></li>";
-    }).join("");
-    $("approach").innerHTML = '<div class="container">' + head("approach") + '<ul class="principles">' + cards + "</ul></div>";
-  }
-
   function renderSkills() {
     // Cada tarjeta lleva su icono para que el título se distinga de un vistazo.
     var SKILL_ICONS = {
@@ -439,41 +432,46 @@
     $("contact").innerHTML =
       '<div class="container"><div class="contact-card reveal">' +
         '<div class="contact-info"><h2 id="contact-title">' + tx(u.contactTitle) + "</h2><p>" + tx(u.contactText) + "</p>" +
-          (p.email ? "" : '<p class="todo-note">' + tx(u.emailMissing) + "</p>") +
         "</div>" +
         '<div class="contact-links">' + rows.join("") + "</div>" +
       "</div></div>";
   }
 
   /* ---------- página de proyecto ---------- */
+  function caseBlock(title, body) { return body ? '<section class="case-block reveal"><h2>' + tx(title) + "</h2>" + body + "</section>" : ""; }
+  function checkList(arr) { return arr && arr.length ? '<ul class="xp-points">' + arr.map(function (x) { return "<li>" + ICON.check + "<span>" + tx(x) + "</span></li>"; }).join("") + "</ul>" : ""; }
+  // Ficha lateral: pares [clave de C.ui.facts, HTML ya escapado]; los vacíos no salen.
+  function factRows(pairs) {
+    return pairs.filter(function (x) { return x[1]; })
+      .map(function (x) { return "<div><dt>" + tx(C.ui.facts[x[0]]) + "</dt><dd>" + x[1] + "</dd></div>"; }).join("");
+  }
+  function othersList(items, href, text, has) {
+    return items.map(function (o) {
+      var title = has(o) ? '<a href="' + href(o) + '">' + tx(o.title || o.name) + "</a>" : tx(o.title || o.name);
+      return '<li class="other reveal"><h3>' + title + "</h3><p>" + tx(text(o)) + "</p></li>";
+    }).join("");
+  }
+  function caseMissing(backHref, backLabel) {
+    document.title = t(C.ui.notFound).replace(/\.$/, "") + ", " + C.profile.name;
+    $("project").innerHTML = '<div class="container case-missing"><h1 class="case-title">' + tx(C.ui.notFound) + '</h1><p><a class="btn btn-ghost" href="' + backHref + '">' + tx(backLabel) + "</a></p></div>";
+  }
+  function callLink(c) { return c ? (c.url ? '<a class="fact-link" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.id) + "</a>" : esc(c.id)) : ""; }
+
   /* Página de un proyecto laboral (proyecto.html?f=slug) */
   function renderFundPage(fslug) {
     var u = C.ui, main = $("project");
     var f = (C.funded || []).filter(function (x) { return x.slug === fslug; })[0] || null;
-    if (f && !hasFundCase(f)) f = null;
-    if (!f) {
-      document.title = t(u.notFound) + " " + C.profile.name;
-      main.innerHTML = '<div class="container case-missing"><p>' + tx(u.notFound) + '</p><p><a class="btn btn-ghost" href="index.html#experience">' + tx(u.backExperience) + "</a></p></div>";
-      return;
-    }
+    if (!f || !hasFundCase(f)) { caseMissing("index.html#experience", u.backExperience); return; }
     document.title = t(f.name) + ", " + C.profile.name;
     var m = f.more || {};
-    function block(title, body) { return body ? '<section class="case-block reveal"><h2>' + tx(title) + "</h2>" + body + "</section>" : ""; }
-    // Convocatoria: el código enlaza a su ficha en el portal Funding & Tenders
-    var call = f.call ? (f.call.url ? '<a class="fact-link" href="' + esc(f.call.url) + '" target="_blank" rel="noopener">' + esc(f.call.id) + "</a>" : esc(f.call.id)) : "";
-    var facts = [["programme", tx(f.programme)], ["call", call], ["amount", tx(f.amount)], ["year", tx(f.year)], ["duration", tx(f.duration)]]
-      .filter(function (x) { return x[1]; })
-      .map(function (x) { return "<div><dt>" + tx(u.facts[x[0]]) + "</dt><dd>" + x[1] + "</dd></div>"; }).join("");
+    var facts = factRows([["programme", tx(f.programme)], ["call", callLink(f.call)], ["amount", tx(f.amount)], ["year", tx(f.year)], ["duration", tx(f.duration)]]);
     // Enlaces públicos (prensa, web del programa), uno por línea en la ficha
     if (f.links && f.links.length) {
       facts += "<div><dt>" + tx(u.links) + "</dt><dd>" + f.links.map(function (l) {
         return '<a class="fact-link fact-link-block" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + tx(l.label) + "</a>";
       }).join("") + "</dd></div>";
     }
-    var others = (C.funded || []).filter(function (o) { return o !== f; }).map(function (o) {
-      var title = hasFundCase(o) ? '<a href="' + fundUrl(o) + '">' + tx(o.name) + "</a>" : tx(o.name);
-      return '<li class="other reveal"><h3>' + title + "</h3><p>" + tx(o.text) + "</p></li>";
-    }).join("");
+    var others = othersList((C.funded || []).filter(function (o) { return o !== f; }), fundUrl, function (o) { return o.text; }, hasFundCase);
     main.innerHTML =
       '<div class="container">' +
         '<a class="case-back reveal" href="index.html#experience">' + ICON.arrowLeft + tx(u.backExperience) + "</a>" +
@@ -484,9 +482,9 @@
         "</header>" +
         '<div class="case-grid">' +
           '<div class="case-body">' +
-            block(u.caseRole, m.role ? "<p>" + tx(m.role) + "</p>" : "") +
-            block(u.caseAbout, (m.details || []).map(function (d) { return "<p>" + tx(d) + "</p>"; }).join("")) +
-            block(u.caseHighlights, m.highlights && m.highlights.length ? '<ul class="xp-points">' + m.highlights.map(function (h) { return "<li>" + ICON.check + "<span>" + tx(h) + "</span></li>"; }).join("") + "</ul>" : "") +
+            caseBlock(u.caseRole, m.role ? "<p>" + tx(m.role) + "</p>" : "") +
+            caseBlock(u.caseAbout, (m.details || []).map(function (d) { return "<p>" + tx(d) + "</p>"; }).join("")) +
+            caseBlock(u.caseHighlights, checkList(m.highlights)) +
           "</div>" +
           '<aside class="case-facts reveal"><dl>' + facts + "</dl></aside>" +
         "</div>" +
@@ -503,23 +501,13 @@
     if (fslug) { renderFundPage(fslug); return; }
     var slug = new URLSearchParams(location.search).get("p");
     var p = C.projects.filter(function (x) { return x.slug === slug; })[0] || null;
-    if (p && !hasCase(p)) p = null;
     var main = $("project"), u = C.ui;
-    if (!p) {
-      document.title = t(u.notFound) + " " + C.profile.name;
-      main.innerHTML = '<div class="container case-missing"><p>' + tx(u.notFound) + '</p><p><a class="btn btn-ghost" href="index.html#projects">' + tx(u.back) + "</a></p></div>";
-      return;
-    }
+    if (!p || !hasCase(p)) { caseMissing("index.html#projects", u.back); return; }
     document.title = t(p.title) + ", " + C.profile.name;
-
-    function block(title, body) { return body ? '<section class="case-block reveal"><h2>' + tx(title) + "</h2>" + body + "</section>" : ""; }
     function para(v) { return v ? "<p>" + tx(v) + "</p>" : ""; }
-    function list(arr) { return arr && arr.length ? '<ul class="xp-points">' + arr.map(function (x) { return "<li>" + ICON.check + "<span>" + tx(x) + "</span></li>"; }).join("") + "</ul>" : ""; }
 
     var repo = p.repo ? '<a class="fact-link" href="' + esc(p.repo) + '">' + ICON.github + "<span>" + tx(u.repoLabel) + "</span></a>" : "";
-    var facts = [["kind", tx(p.kind)], ["year", tx(p.year)], ["status", tx(p.status)], ["repo", repo]]
-      .filter(function (f) { return f[1]; })
-      .map(function (f) { return "<div><dt>" + tx(u.facts[f[0]]) + "</dt><dd>" + f[1] + "</dd></div>"; }).join("");
+    var facts = factRows([["kind", tx(p.kind)], ["year", tx(p.year)], ["status", tx(p.status)], ["repo", repo]]);
     var images = p.images || [];
     // Con vídeo, la portada es el vídeo (la captura hace de imagen de espera); si no, la captura.
     var v = p.video;
@@ -531,10 +519,7 @@
     var gallery = images.slice(1).map(function (im) {
       return '<figure class="case-shot reveal">' + picture(im) + "<figcaption>" + tx(im.alt) + "</figcaption></figure>";
     }).join("");
-    var others = C.projects.filter(function (o) { return o !== p; }).map(function (o) {
-      var title = hasCase(o) ? '<a href="' + projUrl(o) + '">' + tx(o.title) + "</a>" : tx(o.title);
-      return '<li class="other reveal"><h3>' + title + "</h3><p>" + tx(o.summary) + "</p></li>";
-    }).join("");
+    var others = othersList(C.projects.filter(function (o) { return o !== p; }), projUrl, function (o) { return o.summary; }, hasCase);
     var link = p.link ? '<a class="btn btn-primary" href="' + esc(p.link) + '">' + tx(u.openLink) + "</a>" : "";
 
     main.innerHTML =
@@ -548,11 +533,11 @@
         cover +
         '<div class="case-grid">' +
           '<div class="case-body">' +
-            block(u.caseProblem, para(p.problem)) +
-            block(u.caseOwned, list(p.owned)) +
-            block(u.caseDecisions, list(p.decisions)) +
-            block(u.caseAi, para(p.ai)) +
-            block(u.caseOutcome, para(p.outcome)) +
+            caseBlock(u.caseProblem, para(p.problem)) +
+            caseBlock(u.caseOwned, checkList(p.owned)) +
+            caseBlock(u.caseDecisions, checkList(p.decisions)) +
+            caseBlock(u.caseAi, para(p.ai)) +
+            caseBlock(u.caseOutcome, para(p.outcome)) +
           "</div>" +
           '<aside class="case-facts reveal"><dl>' + facts + "</dl></aside>" +
         "</div>" +
@@ -597,7 +582,7 @@
     $("skip").textContent = t(C.ui.skip);
     renderHeader();
     if (page === "home") {
-      renderHero(); renderAbout(); renderExperience(); renderProjects(); if (C.showApproach !== false) renderApproach(); else $("approach").hidden = true; renderSkills(); renderContact();
+      renderHero(); renderAbout(); renderExperience(); renderProjects(); renderSkills(); renderContact();
     } else {
       renderProjectPage();
     }
