@@ -21,6 +21,13 @@
     });
   }
   function tx(v) { return esc(t(v)); }
+  // Texto con un enlace en una palabra: { es, en, link: { text: { es, en }, url } }
+  function txLink(v) {
+    var html = tx(v), l = v && v.link;
+    if (!l) return html;
+    var word = tx(l.text);
+    return html.replace(word, '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + word + "</a>");
+  }
   function $(id) { return document.getElementById(id); }
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
@@ -147,6 +154,7 @@
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
       store("theme", next);
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", next === "dark" ? "#0e0c16" : "#ffffff");
       renderHeader();
       syncShots();
       $("theme-toggle").focus();
@@ -311,7 +319,7 @@
       return '<div class="xp-panel" role="tabpanel" id="xp-panel-' + i + '" aria-labelledby="xp-tab-' + i + '"' + (i === xpSelected ? "" : " hidden") + ">" +
         '<h3 class="xp-role">' + tx(e.role) + ' <span class="xp-at">' + (lang() === "en" ? "at" : "en") + " " + (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + tx(e.org) + "</a>" : tx(e.org)) + "</span></h3>" +
         '<p class="xp-meta">' + esc(fmtDate(e.start)) + " – " + esc(fmtDate(e.end)) + (e.place ? " <span>" + tx(e.place) + "</span>" : "") + "</p>" +
-        '<ul class="xp-points">' + (e.points || []).map(function (pt, k) { return '<li style="--i:' + k + '">' + ICON.check + "<span>" + tx(pt) + "</span></li>"; }).join("") + "</ul>" +
+        '<ul class="xp-points">' + (e.points || []).map(function (pt, k) { return '<li style="--i:' + k + '">' + ICON.check + "<span>" + txLink(pt) + "</span></li>"; }).join("") + "</ul>" +
         // Herramientas usadas en ese puesto, como chips con logo (solo si hay)
         (e.tools && e.tools.length ? '<div class="xp-tools"><p class="xp-tools-label">' + tx(C.ui.toolsTitle) + "</p>" + chips(e.tools) + "</div>" : "") +
       "</div>";
@@ -580,6 +588,8 @@
   /* ---------- arranque ---------- */
   function render() {
     $("skip").textContent = t(C.ui.skip);
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta && C.profile.description) meta.setAttribute("content", t(C.profile.description));
     renderHeader();
     if (page === "home") {
       renderHero(); renderAbout(); renderExperience(); renderProjects(); renderSkills(); renderContact();

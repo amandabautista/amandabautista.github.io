@@ -2,6 +2,7 @@ window.CONTENT = {
   profile: {
     name: "Amanda Bautista",
     role: { es: "IT Project Manager en tecnología e innovación", en: "IT Project Manager, tech and innovation" },
+    description: { es: "IT Project Manager en tecnología e innovación. Coordino equipos, presupuestos, plazos y consorcios desde la propuesta hasta la justificación, y construyo mis propias apps con IA.", en: "IT Project Manager in technology and innovation. I coordinate teams, budgets, deadlines and consortia from proposal to final report, and build my own apps with AI." },
     location: null,
     email: "amandabafer@icloud.com",
     linkedin: "https://www.linkedin.com/in/amanda-bautista-fernandez",
@@ -11,7 +12,7 @@ window.CONTENT = {
 
   /* ---------- Portada ---------- */
   hero: {
-    photo: "amanda.jpg",
+    photo: "amanda.avif",
     title: {
       es: "Gestiono proyectos de tecnología e innovación, y construyo producto con IA",
       en: "I manage technology and innovation projects, and build products with AI",
@@ -92,15 +93,15 @@ window.CONTENT = {
       status: { es: "Instalable y en uso cada semana", en: "Installable and used every week" },
       stack: ["Electron", "React", "TypeScript", "Tailwind CSS", "SQLite"],
       images: [
-        { src: "makerhub-library.jpg", dark: "makerhub-library-dark.jpg", alt: { es: "La biblioteca de MakerHub con los diseños organizados", en: "The MakerHub library with designs organised" } },
-        { src: "makerhub-spools.jpg", alt: { es: "Bobinas de filamento con lo que queda en cada una", en: "Filament spools with what is left on each" } },
-        { src: "makerhub-statistics.jpg", alt: { es: "Estadísticas de impresiones, filamento y coste", en: "Statistics for prints, filament and cost" } },
+        { src: "makerhub-library.avif", dark: "makerhub-library-dark.avif", alt: { es: "La biblioteca de MakerHub con los diseños organizados", en: "The MakerHub library with designs organised" } },
+        { src: "makerhub-spools.avif", alt: { es: "Bobinas de filamento con lo que queda en cada una", en: "Filament spools with what is left on each" } },
+        { src: "makerhub-statistics.avif", alt: { es: "Estadísticas de impresiones, filamento y coste", en: "Statistics for prints, filament and cost" } },
       ],
       link: null,
       repo: "https://github.com/amandabautista/makerhub",
       video: {
         src: "makerhub-demo.mp4",
-        poster: "makerhub-library.jpg",
+        poster: "makerhub-library.avif",
         caption: { es: "Recorrido de 70 segundos por MakerHub. Sin sonido: los rótulos cuentan la historia.", en: "A 70-second walkthrough of MakerHub. No sound: the captions tell the story." },
       },
       problem: {
@@ -141,7 +142,7 @@ window.CONTENT = {
       status: { es: "MVP completo, en construcción", en: "MVP complete, in progress" },
       stack: ["Electron", "React", "TypeScript", "Tailwind CSS", "SQLite"],
       images: [
-        { src: "granthub-calls.jpg", dark: "granthub-calls-dark.jpg", alt: { es: "Lista de convocatorias de GrantHub con plazos, zona horaria y estado (datos de ejemplo)", en: "GrantHub's list of funding calls with deadlines, time zones and status (sample data)" } },
+        { src: "granthub-calls.avif", dark: "granthub-calls-dark.avif", alt: { es: "Lista de convocatorias de GrantHub con plazos, zona horaria y estado (datos de ejemplo)", en: "GrantHub's list of funding calls with deadlines, time zones and status (sample data)" } },
       ],
       link: null,
       problem: {
@@ -174,7 +175,7 @@ window.CONTENT = {
       status: { es: "En uso", en: "In use" },
       stack: ["Electron", "React", "TypeScript", "Tailwind CSS", "SQLite"],
       images: [
-        { src: "cvstudio-editor.jpg", dark: "cvstudio-editor-dark.jpg", alt: { es: "Mi CV abierto en el editor de CV Studio, con la vista previa al lado", en: "My CV open in CV Studio's editor, with the live preview alongside" } },
+        { src: "cvstudio-editor.avif", dark: "cvstudio-editor-dark.avif", alt: { es: "Mi CV abierto en el editor de CV Studio, con la vista previa al lado", en: "My CV open in CV Studio's editor, with the live preview alongside" } },
       ],
       link: null,
     },
@@ -190,7 +191,7 @@ window.CONTENT = {
       status: { es: "Terminado", en: "Finished" },
       stack: ["Python"],
       images: [
-        { src: "organizador-terminal.jpg", dark: "organizador-terminal-dark.jpg", alt: { es: "Terminal con la simulación del organizador: cada archivo y la carpeta a la que iría (archivos de ejemplo)", en: "Terminal showing the organiser's dry run: each file and the folder it would go to (sample files)" } },
+        { src: "organizador-terminal.avif", dark: "organizador-terminal-dark.avif", alt: { es: "Terminal con la simulación del organizador: cada archivo y la carpeta a la que iría (archivos de ejemplo)", en: "Terminal showing the organiser's dry run: each file and the folder it would go to (sample files)" } },
       ],
       link: null,
     },
@@ -248,7 +249,8 @@ window.CONTENT = {
       start: "2023-06",
       end: "2023-12",
       points: [
-        { es: "Redacción de artículos para la web sobre veganismo, derechos animales, sostenibilidad y cambio climático.", en: "Wrote articles for the website on veganism, animal rights, sustainability and climate change." },
+        { es: "Redacción de artículos para la web sobre veganismo, derechos animales, sostenibilidad y cambio climático.", en: "Wrote articles for the website on veganism, animal rights, sustainability and climate change.", link: { text: { es: "artículos", en: "articles" }, url: "https://www.vkind.com/?s=amanda+bautista" } },
+        { es: "Planificación del contenido mensual junto a los equipos de diseño y prensa, proponiendo temas, ideas y cambios.", en: "Planned each month's content with the design and press teams, suggesting topics, ideas and changes." },
         { es: "Alta manual de los restaurantes y negocios veganos de todo Estados Unidos en el directorio de la web.", en: "Added vegan restaurants and businesses from across the United States to the website's directory, one by one." },
         { es: "Carruseles de Instagram con Canva a partir de los contenidos de la web.", en: "Created Instagram carousels in Canva from the website's content." },
         { es: "Publicación y mantenimiento de contenidos en WordPress.", en: "Published and maintained content in WordPress." },
@@ -349,9 +351,9 @@ window.CONTENT = {
       year: "2025",
       duration: { es: "12 meses (enero–diciembre de 2025)", en: "12 months (January–December 2025)" },
       images: [
-        { src: "off-escac-narrativa.jpg", alt: { es: "Cartel del curso de Creación narrativa en videojuegos, octubre de 2025", en: "Poster for the Narrative design for video games course, October 2025" } },
-        { src: "off-escac-cgi.jpg", alt: { es: "Cartel del curso de CGI Modelaje (nivel intermedio), septiembre de 2025", en: "Poster for the CGI Modelling (intermediate) course, September 2025" } },
-        { src: "off-escac-produccion-virtual.jpg", alt: { es: "Cartel del curso de Iniciación a producción virtual, julio de 2025", en: "Poster for the Introduction to virtual production course, July 2025" } },
+        { src: "off-escac-narrativa.avif", alt: { es: "Cartel del curso de Creación narrativa en videojuegos, octubre de 2025", en: "Poster for the Narrative design for video games course, October 2025" } },
+        { src: "off-escac-cgi.avif", alt: { es: "Cartel del curso de CGI Modelaje (nivel intermedio), septiembre de 2025", en: "Poster for the CGI Modelling (intermediate) course, September 2025" } },
+        { src: "off-escac-produccion-virtual.avif", alt: { es: "Cartel del curso de Iniciación a producción virtual, julio de 2025", en: "Poster for the Introduction to virtual production course, July 2025" } },
       ],
       links: [
         { label: { es: "Entrevista en El Español", en: "Interview in El Español (Spanish)" }, url: "https://www.elespanol.com/alicante/20250710/alicante-convierte-centro-formacion-audiovisual-videojuegos-empece-cero-semanas-robots/1003743841048_0.html" },
