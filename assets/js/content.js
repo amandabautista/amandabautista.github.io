@@ -1,8 +1,8 @@
 window.CONTENT = {
   profile: {
     name: "Amanda Bautista",
-    role: { es: "IT Project Manager en tecnología e innovación", en: "IT Project Manager, tech and innovation" },
-    description: { es: "IT Project Manager en tecnología e innovación. Coordino equipos, presupuestos, plazos y consorcios desde la propuesta hasta la justificación, y construyo mis propias apps con IA.", en: "IT Project Manager in technology and innovation. I coordinate teams, budgets, deadlines and consortia from proposal to final report, and build my own apps with AI." },
+    role: { es: "Project Manager · Tecnología, cultura e I+D+i", en: "Project Manager · Technology, culture and R&D" },
+    description: { es: "Project Manager en tecnología, cultura e I+D+i. Gestiono proyectos, coordino equipos y conecto personas e instituciones para hacer realidad las ideas, y desarrollo mis propias aplicaciones.", en: "Project Manager in technology, culture and R&D. I manage projects, coordinate teams and bring people and institutions together to turn ideas into reality, and I build my own apps." },
     location: null,
     email: "amandabafer@icloud.com",
     linkedin: "https://www.linkedin.com/in/amanda-bautista-fernandez",
@@ -18,14 +18,15 @@ window.CONTENT = {
       en: "I manage technology and innovation projects, and build products with AI",
     },
     roles: [
-      { es: "Gestión de proyectos tecnológicos", en: "Technology project management" },
-      { es: "Proyectos europeos y nacionales", en: "European and national projects" },
-      { es: "Innovación e I+D+i", en: "Innovation and R&D" },
+      { es: "Gestión de proyectos tecnológicos e\u00a0I+D+i", en: "Technology and R&D project management" },
+      { es: "Proyectos culturales y sociales", en: "Cultural and social projects" },
+      { es: "Financiación europea y nacional", en: "European and national funding" },
+      { es: "Agile, Scrum, Kanban o híbrido", en: "Agile, Scrum, Kanban or hybrid" },
       { es: "Producto construido con IA", en: "Products built with AI" },
     ],
     tagline: {
-      es: "Coordino equipos, presupuestos, plazos y consorcios desde la propuesta hasta la justificación. Y por mi cuenta llevo mis propias apps de la idea al instalable.",
-      en: "I coordinate teams, budgets, deadlines and consortia from proposal to final report. And on my own, I take my own apps from idea to installer.",
+      es: "Gestiono proyectos, coordino equipos y conecto personas e instituciones para hacer realidad las ideas. Y también construyo las mías: desarrollo aplicaciones desde cero hasta convertirlas en productos instalables.",
+      en: "I manage projects, coordinate teams and bring people and institutions together to turn ideas into reality. And I build my own too: I develop apps from scratch until they become installable products.",
     },
     cards: [
       { value: "+3", text: { es: "años gestionando proyectos", en: "years managing projects" } },
@@ -162,6 +163,10 @@ window.CONTENT = {
         es: "23 sprints cerrados: CRM de financiación, pipeline con consorcio, presupuestos, plan de trabajo, riesgos, ejecución, generación de la documentación de propuesta e instalable para macOS.",
         en: "23 sprints done: funding CRM, pipeline with consortium, budgets, work plan, risks, delivery tracking, proposal document generation and a macOS installer.",
       },
+      ai: {
+        es: "El código lo escribió Claude, a través de Claude Code, siguiendo mi dirección: el plan por sprints, prototipos, cambios en la base de datos, depuración y tests. Sus errores los encontré usando la app con mis propias convocatorias y propuestas, y pidiendo medidas en vez de garantías. Dentro de la app, la IA es solo una ayuda opcional para rellenar una convocatoria a partir de su PDF.",
+        en: "The code was written by Claude, through Claude Code, under my direction: the sprint plan, prototypes, database changes, debugging and tests. I caught its mistakes by using the app with my own calls and proposals, and asking for measurements instead of assurances. Inside the app, AI is only an optional helper to fill in a call from its PDF.",
+      },
     },
     {
       slug: "cv-studio",
@@ -206,14 +211,15 @@ window.CONTENT = {
       tools: ["Google Workspace", "Microsoft 365", "ClickUp", "Funding & Tenders Portal", { es: "PCM y Marco Lógico", en: "PCM & Logframe" }, "Figma", "Unity", "Unreal Engine", "Blender", "DaVinci Resolve"],
       org: "GGTech Entertainment",
       place: { es: "En remoto", en: "Remote" },
-      start: "2023",
+      start: "2023-10",
       end: null,
       points: [
-        { es: "Gestión integral de proyectos tecnológicos: alcance, planificación, hitos, presupuesto, riesgos y entregables.", en: "End-to-end management of technology projects: scope, planning, milestones, budget, risks and deliverables." },
+        { es: "Gestión integral de proyectos de software, como videojuegos, y de la parte técnica de los consorcios europeos: alcance, planificación, hitos, presupuesto, riesgos y entregables. Cuando un proyecto se aprueba, lo llevo de principio a fin, como LÁZARA.", en: "End-to-end management of software projects, such as video games, and of the technical side of European consortia: scope, planning, milestones, budget, risks and deliverables. When a project is approved, I run it from start to finish, as with LÁZARA." },
+        { es: "Metodologías ágiles (Scrum, Kanban), en cascada o un enfoque híbrido, según lo que pida cada proyecto.", en: "Agile (Scrum, Kanban), waterfall or a hybrid approach, depending on what each project needs." },
         { es: "Coordinación de equipos de desarrollo, diseño y arte, y de colaboradores externos y proveedores, con seguimiento de cargas de trabajo y dependencias.", en: "Coordinating development, design and art teams, plus external collaborators and suppliers, tracking workloads and dependencies." },
         { es: "Seguimiento de proyectos y contratos: desviaciones, facturación e interlocución con clientes y stakeholders.", en: "Tracking projects and contracts: deviations, invoicing and the relationship with clients and stakeholders." },
         { es: "Coordinación de consorcios internacionales y relación con organismos europeos (EACEA, HaDEA), con informes de seguimiento y reporting técnico-financiero.", en: "Coordinating international consortia and working with European agencies (EACEA, HaDEA), with progress reports and technical and financial reporting." },
-        { es: "Preparación de propuestas para Horizonte Europa, Europa Creativa MEDIA, CERV, CDTI, AVI y Ministerio de Cultura. En 2026, dos proyectos europeos y un contrato público con más de 960.000 € de financiación.", en: "Preparing proposals for Horizon Europe, Creative Europe MEDIA, CERV, CDTI, AVI and Spain's Ministry of Culture. In 2026, two European projects and a public contract with over €960,000 in funding." },
+        { es: "Preparación de propuestas para Horizonte Europa, Europa Creativa MEDIA, CERV, CDTI, AVI y Ministerio de Cultura. En 2026, dos proyectos europeos (IDETECT y LÁZARA) y la licitación de Alicante Puerto de Salida, un evento para enero de 2027: más de 960.000 € de financiación para GGTech.", en: "Preparing proposals for Horizon Europe, Creative Europe MEDIA, CERV, CDTI, AVI and Spain's Ministry of Culture. In 2026, two European projects (IDETECT and LÁZARA) and the public tender for Alicante Puerto de Salida, an event in January 2027: over €960,000 in funding for GGTech." },
       ],
     },
     {
@@ -285,6 +291,7 @@ window.CONTENT = {
       name: "IDETECT",
       programme: { es: "Horizonte Europa", en: "Horizon Europe" },
       amount: { es: "4,7 M€", en: "€4.7M" },
+      amountNote: { es: "401.000 € para GGTech", en: "€401,000 for GGTech" },
       year: "2027–2030",
       duration: { es: "48 meses", en: "48 months" },
       call: { id: "HORIZON-HLTH-2026-01-DISEASE-02", url: "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-HLTH-2026-01-DISEASE-02" },

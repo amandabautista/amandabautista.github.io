@@ -329,7 +329,7 @@
     // Cada proyecto laboral es una tarjeta; si tiene contenido ("more"), enlaza a su
     // página propia, igual que los proyectos propios.
     var funded = (C.funded || []).map(function (f, fi) {
-      var meta = [t(f.programmeShort || f.programme), t(f.year)].filter(Boolean).map(esc).join(", ");
+      var meta = [t(f.programmeShort || f.programme), t(f.year)].filter(Boolean).map(esc).join(", ") + (f.amountNote ? " · " + tx(f.amountNote) : "");
       var link = hasFundCase(f);
       var title = link ? '<a href="' + fundUrl(f) + '">' + tx(f.name) + "</a>" : tx(f.name);
       return '<li class="reveal" style="--d:' + (fi % 2) + '"><div class="fund' + (link ? " fund-link" : "") + '">' +
@@ -472,7 +472,7 @@
     if (!f || !hasFundCase(f)) { caseMissing("index.html#experience", u.backExperience); return; }
     document.title = t(f.name) + ", " + C.profile.name;
     var m = f.more || {};
-    var facts = factRows([["programme", tx(f.programme)], ["call", callLink(f.call)], ["amount", tx(f.amount)], ["year", tx(f.year)], ["duration", tx(f.duration)]]);
+    var facts = factRows([["programme", tx(f.programme)], ["call", callLink(f.call)], ["amount", tx(f.amount) + (f.amountNote ? "<br><span class=\"fact-note\">" + tx(f.amountNote) + "</span>" : "")], ["year", tx(f.year)], ["duration", tx(f.duration)]]);
     // Enlaces públicos (prensa, web del programa), uno por línea en la ficha
     if (f.links && f.links.length) {
       facts += "<div><dt>" + tx(u.links) + "</dt><dd>" + f.links.map(function (l) {
