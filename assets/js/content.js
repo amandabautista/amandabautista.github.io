@@ -478,7 +478,7 @@ window.CONTENT = {
     { title: { es: "Grado en Humanidades", en: "Bachelor's in Humanities" }, org: { es: "Universidad de Alicante", en: "University of Alicante" }, year: "2014–2018" },
   ],
   certificates: [
-    { title: { es: "Gestión de proyectos europeos (PCM y Marco Lógico)", en: "European project management (PCM and Logical Framework)" }, org: "Yeseuropa", year: { es: "en curso", en: "in progress" } },
+    { title: { es: "Gestión de proyectos europeos", en: "European project management" }, org: "Yeseuropa", year: { es: "en curso", en: "in progress" } },
     { title: { es: "Transformación digital: agentes del cambio", en: "Digital transformation: agents of change" }, org: "FEMPA", year: "2026" },
     { title: { es: "Inteligencia artificial", en: "Artificial intelligence" }, org: "Ironhack", year: "2026" },
     { title: "Business Intelligence con Power BI", org: "San Valero", year: "2026" },
