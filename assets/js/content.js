@@ -289,7 +289,7 @@ window.CONTENT = {
     },
     {
       role: { es: "Técnico de biblioteca y colecciones", en: "Library and collections technician" },
-      logo: "marq.jpg",
+      logo: "marq.png",
       tabLabel: "MARQ",
       short: "MARQ",
       tools: ["Microsoft 365", "Trello", "Absys"],
