@@ -235,7 +235,7 @@ window.CONTENT = {
       role: "Project Manager",
       logo: "ggtech.png",
       short: "GGTech",
-      tools: ["Google Workspace", "Microsoft 365", "ClickUp", "Funding & Tenders Portal", { es: "PCM y Marco Lógico", en: "PCM and Logical Framework" }, "Figma", "Unity", "Unreal Engine", "Blender", "DaVinci Resolve"],
+      tools: ["Google Workspace", "Microsoft 365", "ClickUp", "Funding & Tenders Portal", { es: "PCM y Marco Lógico", en: "PCM & Logframe" }, "Figma", "Unity", "Unreal Engine", "Blender", "DaVinci Resolve"],
       org: "GGTech Entertainment",
       place: { es: "En remoto", en: "Remote" },
       start: "2023",
@@ -488,7 +488,7 @@ window.CONTENT = {
     { name: { es: "Valenciano", en: "Valencian" }, level: { es: "nativo", en: "native" } },
     { name: { es: "Inglés", en: "English" }, level: { es: "profesional", en: "professional" } },
   ],
-  tools: ["Jira", "Trello", "ClickUp", "Notion", "Slack", "Microsoft 365", "Google Workspace", "Power BI", "Funding & Tenders Portal", { es: "PCM y Marco Lógico", en: "PCM and Logical Framework" }, "Claude", "Make", "GitHub", "Figma", "Blender", "Unity", "Unreal Engine", "DaVinci Resolve", "Canva", "WordPress"],
+  tools: ["Jira", "Trello", "ClickUp", "Notion", "Slack", "Microsoft 365", "Google Workspace", "Power BI", "Funding & Tenders Portal", { es: "PCM y Marco Lógico", en: "PCM & Logframe" }, "Claude", "Make", "GitHub", "Figma", "Blender", "Unity", "Unreal Engine", "DaVinci Resolve", "Canva", "WordPress"],
 
   /* ---------- Textos de la interfaz ---------- */
   ui: {
