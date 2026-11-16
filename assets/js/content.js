@@ -233,7 +233,7 @@ window.CONTENT = {
   experience: [
     {
       role: "Project Manager",
-      logo: "ggtech.png",
+      logo: "ggtech.png", url: "https://ggtech.gg",
       short: "GGTech",
       tools: ["Google Workspace", "Microsoft 365", "ClickUp", "Funding & Tenders Portal", { es: "PCM y Marco Lógico", en: "PCM & Logframe" }, "Figma", "Unity", "Unreal Engine", "Blender", "DaVinci Resolve"],
       org: "GGTech Entertainment",
@@ -251,7 +251,7 @@ window.CONTENT = {
     {
       role: { es: "Técnico de Gestión", en: "Management Officer" },
       short: "Diputación",
-      logo: "diputacion.png", logoPos: "center 18%", logoSize: "170%",
+      logo: "diputacion.png", url: "https://www.diputacionalicante.es",
       tools: ["Microsoft 365", "Trello", "Gestiona", "Absys"],
       org: "Diputación de Alicante",
       place: { es: "Área de Cultura y MUBAG (2022) · Archivo General (2023), Alicante", en: "Culture Department and MUBAG (2022) · General Archive (2023), Alicante" },
@@ -273,7 +273,7 @@ window.CONTENT = {
   otherRoles: [
     {
       role: "Copywriter",
-      logo: "vkind.png",
+      logo: "vkind.png", url: "https://www.vkind.com",
       short: "VKind",
       tools: ["Slack", "Jira", "Canva", "WordPress"],
       org: "VKind",
@@ -289,11 +289,11 @@ window.CONTENT = {
     },
     {
       role: { es: "Técnico de biblioteca y colecciones", en: "Library and collections technician" },
-      logo: "marq.png",
+      logo: "marq.png", darkInvert: true, url: "https://www.marqalicante.com",
       tabLabel: "MARQ",
       short: "MARQ",
       tools: ["Microsoft 365", "Trello", "Absys"],
-      org: { es: "MARQ, Museo Arqueológico de Alicante", en: "MARQ, Alicante Archaeological Museum" },
+      org: { es: "MARQ (Museo Arqueológico de Alicante)", en: "MARQ (Alicante Archaeological Museum)" },
       place: { es: "Biblioteca y Archivo Documental Técnico, Alicante", en: "Library and Technical Archive, Alicante" },
       start: "2020-01",
       end: "2020-12",

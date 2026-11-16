@@ -298,15 +298,15 @@
 
   function renderExperience() {
     var list = C.experience.concat((C.otherRoles || []).map(function (o) {
-      return { role: o.role, org: o.org, place: o.place, start: o.start, end: o.end, points: o.points || (o.text ? [o.text] : []), tools: o.tools, logo: o.logo, logoPos: o.logoPos, logoSize: o.logoSize, tabLabel: o.tabLabel, short: o.short };
+      return { role: o.role, org: o.org, place: o.place, start: o.start, end: o.end, points: o.points || (o.text ? [o.text] : []), tools: o.tools, logo: o.logo, url: o.url, darkInvert: o.darkInvert, logoPos: o.logoPos, logoSize: o.logoSize, tabLabel: o.tabLabel, short: o.short };
     }));
     var tabs = list.map(function (e, i) {
       return '<button class="xp-tab" role="tab" type="button" id="xp-tab-' + i + '" aria-controls="xp-panel-' + i + '" aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '">' +
-        (e.logo ? '<span class="xp-logo" aria-hidden="true" style="background-image:url(assets/img/companies/' + esc(e.logo) + ')' + (e.logoPos ? ';background-position:' + e.logoPos : '') + (e.logoSize ? ';background-size:' + e.logoSize : '') + '"></span>' : '') + '<span class="xp-tab-org">' + tx(e.tabLabel || e.org) + '</span><span class="xp-tab-short">' + tx(e.short || e.tabLabel || e.org) + '</span><span class="xp-tab-years">' + esc(String(e.start).split("-")[0]) + (e.end && String(e.end).split("-")[0] !== String(e.start).split("-")[0] ? "–" + esc(String(e.end).split("-")[0]) : (e.end ? "" : "–" + tx(C.ui.present))) + "</span></button>";
+        (e.logo ? '<span class="xp-logo' + (e.darkInvert ? ' xp-logo-dark' : '') + '" aria-hidden="true" style="background-image:url(assets/img/companies/' + esc(e.logo) + ')' + (e.logoPos ? ';background-position:' + e.logoPos : '') + (e.logoSize ? ';background-size:' + e.logoSize : '') + '"></span>' : '') + '<span class="xp-tab-org">' + tx(e.tabLabel || e.org) + '</span><span class="xp-tab-short">' + tx(e.short || e.tabLabel || e.org) + '</span><span class="xp-tab-years">' + esc(String(e.start).split("-")[0]) + (e.end && String(e.end).split("-")[0] !== String(e.start).split("-")[0] ? "–" + esc(String(e.end).split("-")[0]) : (e.end ? "" : "–" + tx(C.ui.present))) + "</span></button>";
     }).join("");
     var panels = list.map(function (e, i) {
       return '<div class="xp-panel" role="tabpanel" id="xp-panel-' + i + '" aria-labelledby="xp-tab-' + i + '"' + (i === 0 ? "" : " hidden") + ">" +
-        '<h3 class="xp-role">' + tx(e.role) + ' <span class="xp-at">' + (lang() === "en" ? "at" : "en") + " " + tx(e.org) + "</span></h3>" +
+        '<h3 class="xp-role">' + tx(e.role) + ' <span class="xp-at">' + (lang() === "en" ? "at" : "en") + " " + (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + tx(e.org) + "</a>" : tx(e.org)) + "</span></h3>" +
         '<p class="xp-meta">' + esc(fmtDate(e.start)) + " – " + esc(fmtDate(e.end)) + (e.place ? " <span>" + tx(e.place) + "</span>" : "") + "</p>" +
         '<ul class="xp-points">' + (e.points || []).map(function (pt, k) { return '<li style="--i:' + k + '">' + ICON.check + "<span>" + tx(pt) + "</span></li>"; }).join("") + "</ul>" +
         // Herramientas usadas en ese puesto, como chips con logo (solo si hay)
